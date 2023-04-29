@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/ver_videojuegos.css' %}">
+
+    <h1>Lista de videojuegos</h1>
+
+    <ul>
+        
+        {% for videojuego in videojuegos %}
+            <li>
+                {{videojuego}}
+            </li>
+            <div style="display: flex; column-gap: 5px;">
+                <form action="{% url 'EliminarVideojuego' videojuego.id %}" method="POST">{% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+                <button>
+                    <a href="{% url 'EditarVideojuego' videojuego.id %}">Editar</a>
+                </button>
+            </div>
+        {% endfor %}
+            
+    </ul>
+
+    <a href="{% url 'AgregarVideojuego' %}">Agregar Videojuego</a>
+{% endblock contenidoQCambia %}

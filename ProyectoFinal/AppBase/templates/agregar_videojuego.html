@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/agregar_videojuego.css' %}">
+
+    <h1>Agregar Videojuego</h1>
+
+    <form action="{% url 'AgregarVideojuego' %}" method="POST">{% csrf_token %}
+        {{mi_formulario.as_p}}
+        <button type="submit"> Enviar </button>
+    </form>
+{% endblock contenidoQCambia %}
