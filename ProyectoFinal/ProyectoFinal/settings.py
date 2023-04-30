@@ -59,6 +59,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'AppBase', 'templates'),
                  os.path.join(BASE_DIR, 'AppRegistro', 'templates'),
                  os.path.join(BASE_DIR, 'AppLogin', 'templates'),
+                 os.path.join(BASE_DIR, 'AppPerfiles', 'templates'),
                 ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -121,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "AppBase" / "static", BASE_DIR / "AppRegistro" / "static", BASE_DIR / "AppLogin" / "static",]
+STATICFILES_DIRS = [BASE_DIR / "AppBase" / "static", BASE_DIR / "AppRegistro" / "static", BASE_DIR / "AppLogin" / "static", BASE_DIR / "AppPerfiles" / "static",]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

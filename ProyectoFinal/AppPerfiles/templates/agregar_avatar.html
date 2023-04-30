@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'agregar_avatar.css' %}">
+
+    <h1>Agregar Avatar</h1>
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{mi_formulario.as_p}}
+        <button type="submit">Agregar</button>
+    </form>
+{% endblock contenidoQCambia %}

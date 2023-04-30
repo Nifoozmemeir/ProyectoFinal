@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count, Avg
 from .models import *
 from .forms import *
+from django.contrib import messages
 
 # Create your views here.
 def inicio(request):
@@ -14,6 +14,7 @@ def inicio(request):
     except:
         return render(request, "inicio.html")
     
+#1er Círculo Inicio!!
 @login_required   
 def agregar_videojuego(request):
     if request.method == 'POST':
@@ -119,3 +120,58 @@ def editar_resena(request, id):
             "videojuego": resena.videojuego,
         })
         return render(request, "editar_resena.html", {"mi_formulario": mi_formulario, "id": resena.id})
+#1er Círculo Fin!!
+
+#2do Círculo Inicio!!
+@login_required
+def busqueda_videojuegos(request):
+    return render(request, 'buscar_videojuegos.html')
+
+@login_required
+def buscar_nombre(request):
+    if request.method == 'GET':
+        form = BuscarNombre(request.GET)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            videojuegos = Videojuego.objects.filter(nombre__icontains=nombre)
+            return render(request, 'res_busqueda_nombre.html', {'videojuegos': videojuegos, 'nombre': nombre})
+    else:
+        form = BuscarNombre()
+    return render(request, 'busq_nombre.html', {'form': form})
+
+@login_required
+def buscar_genero(request):
+    if request.method == 'GET':
+        form = BuscarGenero(request.GET)
+        if form.is_valid():
+            genero = form.cleaned_data['genero']
+            videojuegos = Videojuego.objects.filter(genero__icontains=genero)
+            return render(request, 'res_busqueda_genero.html', {'videojuegos': videojuegos, 'genero': genero})
+    else:
+        form = BuscarGenero()
+    return render(request, 'busq_genero.html', {'form': form})
+
+@login_required
+def buscar_empresa(request):
+    if request.method == 'GET':
+        form = BuscarEmpresa(request.GET)
+        if form.is_valid():
+            empresa = form.cleaned_data['empresa']
+            videojuegos = Videojuego.objects.filter(empresa__icontains=empresa)
+            return render(request, 'res_busqueda_empresa.html', {'videojuegos': videojuegos, 'empresa': empresa})
+    else:
+        form = BuscarEmpresa()
+    return render(request, 'busq_empresa.html', {'form': form})
+
+@login_required
+def buscar_valoracion(request):
+    if request.method == 'GET':
+        form = BuscarValoracion(request.GET)
+        if form.is_valid():
+            valoracion = form.cleaned_data['valoracion']
+            videojuegos = Videojuego.objects.filter(valoracion__icontains=valoracion)
+            return render(request, 'res_busqueda_valoracion.html', {'videojuegos': videojuegos, 'valoracion': valoracion})
+    else:
+        form = BuscarValoracion()
+    return render(request, 'busq_valoracion.html', {'form': form})
+#2do Cícurlo Final!!

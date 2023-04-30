@@ -42,6 +42,11 @@
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#pricing">About Me</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'Perfil' %}">Perfil</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                     {% if user.is_authenticated %}
                         {% if url %}
@@ -105,14 +110,14 @@
                     </div>
                     <div class="col-md-6 box">
                         <div class="icon-box box-success">
-                            <a href="#"></a>
+                            <a href="{% url 'BusquedaVideojuegos' %}">
                                 <div class="icon-box-inner">
                                     <span data-feather="monitor" width="35" height="35"></span>
                                 </div>
                             </a>
                         </div>
                         <h5>Info y data de videojuegos</h5>
-                        <p class="text-muted">checkea cuales son los videojuegos más agregados y cuales los más valorados.</p>
+                        <p class="text-muted">Buscá los videojuegos que quieras por nombre, empresa, género o valoración.</p>
                     </div>
                     <div class="col-md-6 box">
                         <div class="icon-box box-danger">

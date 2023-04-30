@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/res_busqueda_genero.css' %}">
+
+<div class="container">
+    <p>Estas buscando los géneros de videojuegos: {{genero}}</p>
+    
+    {% if videojuegos %}
+        <ul>
+            {% for videojuego in videojuegos %}
+                <li>
+                    {{videojuego.nombre}} - {{videojuego.empresa}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron videojuegos con ese género</p>
+    {% endif %}
+</div>
+
+        
+{% endblock contenidoQCambia %}
