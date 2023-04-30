@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md navbar-dark">
             <a class="navbar-brand heading-black" href="{% url 'Inicio' %}">
-                Knight
+                HOME
             </a>
             <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -43,11 +43,23 @@
                         <a class="nav-link page-scroll" href="#pricing">About Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary" href="#">
+                    {% if user.is_authenticated %}
+                        {% if url %}
+                            <img height="60px" src="{{url}}" alt="avatar">
+                        {% endif %}
+                        <p>Bienvenido {{user.username}}</p>
+                        <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary" href="{% url 'Logout' %}">
+                            <em data-feather="layout" width="18" height="18" class="mr-2"></em>
+                            LOGOUT
+                        </a>
+                    {% else %}
+                        <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary" href="{% url 'Login' %}">
                             <em data-feather="layout" width="18" height="18" class="mr-2"></em>
                             LOGIN
                         </a>
+                    {% endif %}
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -61,10 +73,10 @@
             <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
                 <h1 class="heading-black text-capitalize">Agregá y ordená todos tus videojuegos favoritos como más desees</h1>
                 <p class="lead py-3">Ordenalos cronológicamente, valoralos, reseñalos, discutilo en el foro o habla con tus amigos. Clickeá en Features o scrolleá hacia abajo para acceder a lo que quieras.</p>
-                <button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                <a class="btn btn-primary d-inline-flex flex-row align-items-center" href="{% url 'RegistroUsuarios' %}">
                     CREAR USUARIO
                     <em class="ml-2" data-feather="arrow-right"></em>
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -82,18 +94,22 @@
                 <div class="row feature-boxes">
                     <div class="col-md-6 box">
                         <div class="icon-box box-primary">
-                            <div class="icon-box-inner">
-                                <span data-feather="edit-3" width="35" height="35"></span>
-                            </div>
-                        </div>
+                            <a href="{% url 'ListaVideojuegos' %}">
+                                <div class="icon-box-inner">
+                                    <span data-feather="edit-3" width="35" height="35"></span>
+                                    </div>
+                                </div>
+                            </a>
                         <h5>Crea tus listas de videojuegos favoritos</h5>
                         <p class="text-muted">Acá vas a poder guardarlos, valorarlos, ordenarlos y reseñarlos.</p>
                     </div>
                     <div class="col-md-6 box">
                         <div class="icon-box box-success">
-                            <div class="icon-box-inner">
-                                <span data-feather="monitor" width="35" height="35"></span>
-                            </div>
+                            <a href="#"></a>
+                                <div class="icon-box-inner">
+                                    <span data-feather="monitor" width="35" height="35"></span>
+                                </div>
+                            </a>
                         </div>
                         <h5>Info y data de videojuegos</h5>
                         <p class="text-muted">checkea cuales son los videojuegos más agregados y cuales los más valorados.</p>

@@ -17,3 +17,8 @@ class VideojuegosForm(forms.Form):
     empresa = forms.CharField(max_length=255)
     descripcion = forms.CharField(max_length=255)
     valoracion = forms.IntegerField(required=True, widget=forms.Select(choices=VALORACIONES_OPCIONES))
+
+class ResenaForm(forms.ModelForm):
+    class Meta:
+        model = Resena
+        fields = ('__all__')

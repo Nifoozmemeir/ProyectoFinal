@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'registro_usuarios.css' %}">
+
+    <h1>Registro de usuarios</h1>
+
+    <form action="{% url 'RegistroUsuarios' %}" method="POST">{% csrf_token %}
+        {{mi_formulario.as_p}}
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock contenidoQCambia %}

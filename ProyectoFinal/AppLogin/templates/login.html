@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+    <h1>Login de usuarios</h1>
+
+    <form action="" method="POST">{% csrf_token %}
+        {{mi_formulario.as_p}}
+        <button type="submit">Iniciar sesión</button>
+    </form>
+{% endblock contenidoQCambia %}

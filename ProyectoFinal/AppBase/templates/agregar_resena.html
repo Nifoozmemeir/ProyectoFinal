@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/agregar_resena.css' %}">
+
+    <h1>Agregar Reseña</h1>
+    <form method="POST">{% csrf_token %}
+        {{ mi_formulario.as_p }}
+        <button type="submit">Agregar</button>
+    </form>
+{% endblock contenidoQCambia %}

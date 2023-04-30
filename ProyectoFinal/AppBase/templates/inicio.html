@@ -9,5 +9,14 @@
         <h1>Bienvenido a la Home!!</h1>
 
         <p>Por favor hace click en lo que quieras acceder!</p>
+
+        <h4>{{mensaje}}</h4>
+        
+    {% for fields_error in mi_formulario.errors.values %}
+        
+        {% for error in fields_error %}
+            <li>{{error}}</li>
+        {% endfor %}
+    {% endfor %}
     </div>
 {% endblock contenidoQCambia %}
