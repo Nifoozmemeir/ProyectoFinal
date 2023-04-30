@@ -14,6 +14,9 @@ def inicio(request):
     except:
         return render(request, "inicio.html")
     
+def AboutMe(request):
+    return render(request, "aboutme.html")
+    
 #1er Círculo Inicio!!
 @login_required   
 def agregar_videojuego(request):

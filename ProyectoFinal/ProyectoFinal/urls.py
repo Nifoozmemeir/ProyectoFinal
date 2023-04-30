@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('AppRegistro.urls')),
     path('', include('AppLogin.urls')),
     path('', include('AppPerfiles.urls')),
+    path('', include('AppMensajes.urls')),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

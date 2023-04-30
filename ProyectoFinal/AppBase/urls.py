@@ -17,4 +17,5 @@ urlpatterns = [
     path('buscar-genero', buscar_genero, name="BuscarGenero"),
     path('buscar-empresa', buscar_empresa, name="BuscarEmpresa"),
     path('buscar-valoracion', buscar_valoracion, name="BuscarValoracion"),
+    path('about-me', AboutMe, name="AboutMe"),
 ]

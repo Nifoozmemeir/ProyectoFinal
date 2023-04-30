@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'conversacion_list.css' %}">
+
+<h1>Conversaciones</h1>
+
+  <a href="{% url 'AppMensajes:CrearConversacion' %}" class="btn btn-primary mb-3">Crear conversación</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="columna-remitente">Remitente</th>
+        <th class="columna-destinatario">Destinatario</th>
+        <th class="columna-ultimomensaje">Último mensaje</th>
+        <th class="columna-fecha">Fecha</th>
+        <th class="columna-acciones">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for conversacion in conversaciones %}
+        <tr>
+          <td>{{ conversacion.remitente }}</td>
+          <td>{{ conversacion.destinatario }}</td>
+          <td>{{ conversacion.mensaje }}</td>
+          <td>{{ conversacion.timestamp|date:"d/m/Y H:i" }}</td>
+          <td><a href="{% url 'AppMensajes:VerConversacion' conversacion.id %}" class="btn btn-sm btn-outline-secondary">Ver conversación</a></td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No hay conversaciones disponibles</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

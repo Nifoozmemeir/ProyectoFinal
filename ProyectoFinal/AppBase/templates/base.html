@@ -40,11 +40,16 @@
                         <a class="nav-link page-scroll" href="#features">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#pricing">About Me</a>
+                        <a class="nav-link page-scroll" href="{% url 'AboutMe' %}">About Me</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="{% url 'Perfil' %}">Perfil</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'AppMensajes:Inbox' %}">Mensajes</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">

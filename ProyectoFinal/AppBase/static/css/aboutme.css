@@ -1,0 +1,24 @@
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin: 1em 0;
+  }
+  
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    height: auto;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  p, button {
+    margin-top: 20px;
+  }
+  
+  
