@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/crear_comentario.css' %}">
+
+<h1>Comentar en "{{ tema.titulo }}"</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Comentar">
+  </form>
+  <a href="{% url 'DetalleTema' tema.pk %}">Volver al detalle del tema</a>
+{% endblock contenidoQCambia %}

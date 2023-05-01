@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth import authenticate
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from .models import *
 from .forms import *
-from django.contrib import messages
 
 # Create your views here.
 def inicio(request):
@@ -178,3 +178,65 @@ def buscar_valoracion(request):
         form = BuscarValoracion()
     return render(request, 'busq_valoracion.html', {'form': form})
 #2do Cícurlo Final!!
+
+#3er Círculo Inicio!!
+@login_required
+def lista_temas(request):
+    temas = Tema.objects.all()
+    return render(request, 'foro.html', {'temas': temas})
+
+@login_required
+def crear_tema(request):
+    if request.method == 'POST':
+        form = TemaForm(request.POST)
+        if form.is_valid():
+            tema = form.save(commit=False)
+            tema.creador = request.user
+            tema.save()
+            return HttpResponseRedirect('/foro')
+    else:
+        form = TemaForm()
+    return render(request, 'crear_tema.html', {'form': form})
+
+@login_required
+def editar_tema(request, pk):
+    tema = get_object_or_404(Tema, pk=pk)
+    if request.method == 'POST':
+        form = TemaForm(request.POST, instance=tema)
+        if form.is_valid():
+            tema = form.save()
+            return HttpResponseRedirect('/foro')
+    else:
+        form = TemaForm(instance=tema)
+    return render(request, 'editar_tema.html', {'form': form, 'tema': tema})
+
+@login_required
+def eliminar_tema(request, pk):
+    tema = get_object_or_404(Tema, pk=pk)
+    tema.delete()
+    return HttpResponseRedirect('/foro')
+
+@login_required
+def detalle_tema(request, pk):
+    tema = get_object_or_404(Tema, pk=pk)
+    comentarios = Comentario.objects.filter(tema=tema)
+    form = ComentarioForm()
+    return render(request, 'detalle_tema.html', {'tema': tema, 'comentarios': comentarios, 'form': form})
+
+@login_required
+def crear_comentario(request, pk):
+    tema = get_object_or_404(Tema, pk=pk)
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.creador = request.user
+            comentario.tema = tema
+            comentario.save()
+            return HttpResponseRedirect(reverse('DetalleTema', args=[tema.pk]))
+    else:
+        form = ComentarioForm()
+    return render(request, 'crear_comentario.html', {'form': form})
+#3er Círculo Final
+
+#El 4to Círculo está en AppMensajes

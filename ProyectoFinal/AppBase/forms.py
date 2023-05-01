@@ -34,3 +34,13 @@ class BuscarEmpresa(forms.Form):
 
 class BuscarValoracion(forms.Form):
     nombre = forms.IntegerField(label='Valoracion', widget=forms.Select(choices=VALORACIONES_OPCIONES))
+
+class TemaForm(forms.ModelForm):
+    class Meta:
+        model = Tema
+        fields = ['titulo', 'descripcion']
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['contenido']
