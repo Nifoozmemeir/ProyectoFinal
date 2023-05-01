@@ -22,7 +22,7 @@ class ConversacionCreateView(LoginRequiredMixin, CreateView):
     model = Mensajes
     fields = ['destinatario', 'mensaje']
     template_name = 'conversacion_create.html'
-    success_url = reverse_lazy('AppMensajes:conversacion_list')
+    success_url = reverse_lazy('AppMensajes:Inbox')
 
     def form_valid(self, form):
         remitente = self.request.user
@@ -39,5 +39,5 @@ class ConversacionDetailView(LoginRequiredMixin, DetailView):
         room_id = self.kwargs['room_id']
         room = get_object_or_404(Mensajes, id=room_id)
         if room.remitente != self.request.user and room.destinatario != self.request.user:
-            return redirect('AppMensajes:conversacion_list')
+            return redirect('AppMensajes:Inbox')
         return room

@@ -68,4 +68,9 @@
         {% url 'AgregarResena' as url %}
         <button type="button" onclick="window.location.href='{{ url }}'">Agregar Reseña</button>
     </div>
+
+    <div style="margin-top: 20px;">
+        {% url 'ListaResenas' as url %}
+        <button type="button" onclick="window.location.href='{{ url }}'">Ver Reseñas hechas</button>
+    </div>
 {% endblock contenidoQCambia %}
