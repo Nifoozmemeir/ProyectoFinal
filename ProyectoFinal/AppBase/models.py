@@ -6,7 +6,7 @@ GENERO_OPCIONES = [('aventura', 'Aventura'), ('deportes', 'Deportes'), ('estrate
                    ('mmorpg', 'MMORPG'), ('shooter', 'Shooter'), ('cartas', 'Cartas'), ('city_builder', 'City Builder'), ('simulador', 'Simulador'), ('carreras', 'Carreras'), 
                    ('arcade', 'Arcade'), ('plataformas', 'Plataformas'), ('pelea', 'Pelea'), ('terror', 'Terror'), ('sigilo', 'Sigilo'), ('battle_royale', 'Battle Royale'), 
                    ('rpg_por_turnos', 'RPG Por Turnos'), ('roguelike', 'Roguelike'), ('sandbox', 'Sandbox'), ('musica', 'Música'), ('tower_defense', 'Tower Defense'), 
-                   ('rts', 'RTS'), ('accion', 'Acción'),]
+                   ('rts', 'RTS'), ('accion', 'Acción'), ('soul', 'Soul'),]
 
 GENERO_OPCIONES = sorted(GENERO_OPCIONES, key=lambda x: x[1])
 
@@ -20,7 +20,7 @@ class Videojuego(models.Model):
     descripcion = models.TextField()
     valoracion = models.IntegerField(choices=VALORACIONES_OPCIONES, null=False)
     def __str__(self):
-        return f"{self.nombre} - {self.fecha_salida} - {self.genero} - {self.empresa} / {self.descripcion} || {self.valoracion} ||"
+        return f"{self.nombre} - {self.genero} - {self.empresa}"
 
 class Resena(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -40,9 +40,13 @@ class Tema(models.Model):
     descripcion = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     creador = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return f"{self.creador} - {self.titulo}"
 
 class Comentario(models.Model):
     contenido = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     creador = models.ForeignKey(User, on_delete=models.CASCADE)
     tema = models.ForeignKey(Tema, on_delete=models.CASCADE, related_name='comentarios')
+    def __str__(self):
+        return f"{self.creador} - {self.tema}"

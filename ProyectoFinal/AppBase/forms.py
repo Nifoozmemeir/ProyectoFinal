@@ -27,13 +27,13 @@ class BuscarNombre(forms.Form):
     nombre = forms.CharField(label='Nombre del videojuego', max_length=255)
 
 class BuscarGenero(forms.Form):
-    nombre = forms.CharField(label='Nombre del género', max_length=255, widget=forms.Select(choices=GENERO_OPCIONES))
+    genero = forms.CharField(label='Nombre del género', max_length=255, widget=forms.Select(choices=GENERO_OPCIONES))
 
 class BuscarEmpresa(forms.Form):
-    nombre = forms.CharField(label='Nombre de la empresa', max_length=255)
+    empresa = forms.CharField(label='Nombre de la empresa', max_length=255)
 
 class BuscarValoracion(forms.Form):
-    nombre = forms.IntegerField(label='Valoracion', widget=forms.Select(choices=VALORACIONES_OPCIONES))
+    valoracion = forms.IntegerField(label='Valoracion', widget=forms.Select(choices=VALORACIONES_OPCIONES))
 
 class TemaForm(forms.ModelForm):
     class Meta:

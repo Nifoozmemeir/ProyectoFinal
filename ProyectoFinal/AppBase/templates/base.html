@@ -75,8 +75,20 @@
         </nav>
     </div>
 </section>
-
+{% if user.is_authenticated %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endif %}
 <!--hero header-->
+{% if not user.is_authenticated %}
 <section class="py-7 py-md-0 bg-hero" id="home">
     <div class="container">
         <div class="row vh-md-100">
@@ -91,6 +103,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 
 <!-- features section -->
 {% block contenidoQCambia %}

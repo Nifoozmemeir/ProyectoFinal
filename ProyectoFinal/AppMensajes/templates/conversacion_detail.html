@@ -20,7 +20,7 @@
       </div>
     </div>
   
-    <form method="post" class="mt-3">
+    <form method="post" class="mt-3" class="mt-3" action="{% url 'AppMensajes:AgregarMensaje' pk=conversacion.id %}">
       {% csrf_token %}
       <div class="mb-3">
         <label for="mensaje" class="form-label">Mensaje:</label>

@@ -19,10 +19,10 @@
     <p>No hay comentarios todavía.</p>
   {% endfor %}
   <h2>Agregar comentario</h2>
-  <form method="post">
+  <form method="post" action="{% url 'CrearComentario' tema.pk %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Agregar</button>
+    <input type="submit" value="Agregar">
   </form>
 </div>
 
