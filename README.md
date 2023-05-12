@@ -17,7 +17,7 @@ Registro y autenticación:
 
 Lista de videojuegos:
     Los usuarios pueden agregar sus videojuegos favoritos haciendo click en "agregar videojuego", una vez agregado lo pueden "editar" y "eliminar".
-    Los usuarios pueden agregar reseñas sobre sus videojuegos favoritos haciendo click en "agregar reseña", una vez agregada la pueden "editar" y "elimminar".
+    Los usuarios pueden agregar reseñas sobre sus videojuegos favoritos haciendo click en "agregar reseña", una vez agregada la pueden "editar" y "eliminar".
     Los usuarios pueden ordenar los videojuegos favoritos por "fecha de lanzamiento" y "valoración".
     
 Búsqueda de videojuegos:
@@ -32,10 +32,10 @@ Foro:
     Los usuarios pueden comentar un tema de discusión existente haciendo click en el tema y después "agregar".
 
 Mensajes:
-    Los usuarios pueden ver una lista de todos las conversaciones.
+    Los usuarios pueden ver una lista de todos las conversaciones haciendo click en "Mensajes" arriba o bajando en la parte del chat, cada usuario tiene su propia mensajería privada con los mensajes que mandó a cada usuario.
     Los usuarios pueden crear una nueva conversación con un mensaje hacia un usuario haciendo click en "CREAR NUEVA CONVERSACIÓN".
-    Los usuarios pueden ver los detalles de la conversación y dejar un comentario haciendo click en "VER CONVERSACIÓN" y luego "ENVIAR MENSAJE".
-
+    Los usuarios pueden dejar un comentario respondiendo el mensaje que otro usuario les mandó haciendo click en "VER CONVERSACIÓN" y luego "ENVIAR MENSAJE", luego se podrá ver la conversación actualizada en "Mensajes".
+    
 Perfil:
     Los usuarios pueden editar su perfil haciendo click en "Perfil" y luego "Editar perfil".
     Los usuarios pueden agregar un avatar para su perfil haciendo click en "Perfil" y luego "Agregar Avatar".
