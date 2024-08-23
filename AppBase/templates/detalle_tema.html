@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/detalle_tema.css' %}">
+
+<div class="contenidoCentrado">
+  <h1>{{ tema.titulo }}</h1>
+  <p>{{ tema.descripcion }}</p>
+  <p>Creado por: {{ tema.creador }}</p>
+  <hr>
+  {% for comentario in comentarios %}
+    <h3>{{ comentario.titulo }}</h3>
+    <p>{{ comentario.contenido }}</p>
+    <p>Creado por: {{ comentario.creador }}</p>
+    <hr>
+  {% empty %}
+    <p>No hay comentarios todavía.</p>
+  {% endfor %}
+  <h2>Agregar comentario</h2>
+  <form method="post" action="{% url 'CrearComentario' tema.pk %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Agregar">
+  </form>
+</div>
+
+{% endblock contenidoQCambia %}

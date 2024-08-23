@@ -1,0 +1,29 @@
+# Ignorar el entorno virtual
+myvenv/
+venv/
+.venv/
+
+# Ignorar archivos de Python compilados
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar configuraciones de entorno específicas del editor
+.vscode/
+.idea/
+
+# Ignorar archivos de log y bases de datos locales
+*.log
+*.sqlite3
+
+# Ignorar archivos de configuración sensibles
+.env
+.env.*
+
+# Ignorar archivos creados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de caché y registros de pip
+pip-log.txt
+pip-delete-this-directory.txt

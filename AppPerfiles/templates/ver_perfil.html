@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'ver_perfil.css' %}">
+
+<div class="container"></div>
+  <h1>Perfil de {{ username }}</h1>
+    <p>Nombre completo: {{ first_name }} {{ last_name }}</p>
+    <p>Email: {{ email }}</p>
+    {% if descripcion %}
+        <p>Descripción: {{ descripcion }}</p>
+    {% endif %}
+    {% if enlace_pagina %}
+        <p>Enlace de página web: <a href="{{ enlace_pagina }}">{{ enlace_pagina }}</a></p>
+    {% endif %}
+</div>
+
+<div style="margin-top: 20px;">
+  {% url 'EditarPerfil' as url %}
+  <button type="button" onclick="window.location.href='{{ url }}'">Editar Perfil</button>
+</div>
+
+<div style="margin-top: 20px;">
+  {% url 'AgregarAvatar' as url %}
+  <button type="button" onclick="window.location.href='{{ url }}'">Agregar Avatar</button>
+</div>
+
+<div style="margin-top: 20px;">
+  {% url 'Avatar' as url %}
+  <button type="button" onclick="window.location.href='{{ url }}'">Ver los avatares</button>
+</div>
+
+{% endblock contenidoQCambia %}
+

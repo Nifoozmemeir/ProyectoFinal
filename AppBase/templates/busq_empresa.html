@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/busq_empresa.css' %}">
+
+    <form action="{% url 'BuscarEmpresa' %}" method="GET">{% csrf_token %}
+        <p>Nombre de la empresa de videojuegos que queres buscar: <input type="text" name="empresa" id=""></p>
+        <button type="submit"> Buscar </button>
+    </form>
+{% endblock contenidoQCambia %}

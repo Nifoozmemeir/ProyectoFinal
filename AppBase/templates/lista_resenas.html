@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lista_resenas.css' %}">
+
+    <h1>Lista de Reseñas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th class="columna-autor">Autor</th>
+                <th class="columna-contenido">Contenido</th>
+                <th class="columna-videojuego">Videojuego</th>
+                <th class="columna-acciones">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resena in reseñas %}
+                <tr>
+                    <td>{{ resena.autor }}</td>
+                    <td>{{ resena.contenido }}</td>
+                    <td>{{ resena.videojuego }}</td>
+                    <td>
+                        <div style="display: flex; column-gap: 5px;">
+                            <form action="{% url 'EliminarResena' resena.id %}" method="POST">{% csrf_token %}
+                                <button type="submit">Eliminar</button>
+                            </form>
+                            <button>
+                                <a href="{% url 'EditarResena' resena.id %}">Editar</a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenidoQCambia %}

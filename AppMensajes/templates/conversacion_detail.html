@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'conversacion_detail.css' %}">
+
+<div class="container">
+    <h1>Conversación</h1>
+  
+    <div class="card">
+      <div class="card-body">
+        {% for mensaje in conversacion.mensajes.all %}
+          <div class="{% if mensaje.remitente == request.user %}text-end{% endif %}">
+            <strong>{{ mensaje.remitente }}:</strong> {{ mensaje.mensaje }}
+          </div>
+        {% empty %}
+          <p>No hay mensajes en esta conversación</p>
+        {% endfor %}
+      </div>
+    </div>
+  
+    <form method="post" class="mt-3" class="mt-3" action="{% url 'AppMensajes:AgregarMensaje' pk=conversacion.id %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje:</label>
+        <textarea name="mensaje" id="mensaje" class="form-control" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+    </form>
+</div>
+{% endblock %}

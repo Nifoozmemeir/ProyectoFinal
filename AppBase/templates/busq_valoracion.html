@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/busq_valoracion.css' %}">
+
+    <form action="{% url 'BuscarValoracion' %}" method="GET">{% csrf_token %}
+        <p>Valoración por la cual queres buscar videojuegos: <input type="number" name="valoracion" id=""></p>
+        <button type="submit"> Buscar </button>
+    </form>
+{% endblock contenidoQCambia %}

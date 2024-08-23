@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_videojuegos.css' %}">
+
+    <h1>Lista de videojuegos</h1>
+
+    <p class="ordenar-por">Ordenar por:</p>
+    <ul>
+        <li>
+            <form method="get" action="{% url 'ListaVideojuegos' %}">
+                <input type="hidden" name="orden" value="lanzamiento" />
+                <button type="submit">Fecha de lanzamiento</button>
+            </form>
+        </li>
+        <li>
+            <form method="get" action="{% url 'ListaVideojuegos' %}">
+                <input type="hidden" name="orden" value="valoracion" />
+                <button type="submit">Valoración</button>
+            </form>
+        </li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="columna-nombre">Nombre</th>
+                <th class="columna-fecha-salida">Fecha de salida</th>
+                <th class="columna-genero">Género</th>
+                <th class="columna-empresa">Empresa</th>
+                <th class="columna-descripcion">Descripción</th>
+                <th class="columna-valoracion">Valoración</th>
+                <th class="columna-acciones">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for videojuego in videojuegos %}
+                <tr>
+                    <td>{{ videojuego.nombre }}</td>
+                    <td>{{ videojuego.fecha_salida }}</td>
+                    <td>{{ videojuego.genero }}</td>
+                    <td>{{ videojuego.empresa }}</td>
+                    <td>{{ videojuego.descripcion }}</td>
+                    <td>{{ videojuego.valoracion }}</td>
+                    <td>
+                        <div style="display: flex; column-gap: 5px;">
+                            <form action="{% url 'EliminarVideojuego' videojuego.id %}" method="POST">{% csrf_token %}
+                                <button type="submit">Eliminar</button>
+                            </form>
+                            <button>
+                                <a href="{% url 'EditarVideojuego' videojuego.id %}">Editar</a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        {% url 'AgregarVideojuego' as url %}
+        <button type="button" onclick="window.location.href='{{ url }}'">Agregar Videojuego</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+        {% url 'AgregarResena' as url %}
+        <button type="button" onclick="window.location.href='{{ url }}'">Agregar Reseña</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+        {% url 'ListaResenas' as url %}
+        <button type="button" onclick="window.location.href='{{ url }}'">Ver Reseñas hechas</button>
+    </div>
+{% endblock contenidoQCambia %}

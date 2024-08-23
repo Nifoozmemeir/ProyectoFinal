@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aboutme.css' %}">
+
+    <h1>Hola! Soy Julián Rosas Sandillú</h1>
+
+    <img class="center" height="400px" src="{% static 'css/foto cv.jpeg' %}" alt="Imagen saludo">
+
+    <body>
+    <h5>Les voy a contar sobre mi!</h5>
+    <p>Nací en 1998, soy de Rosario, Argentina y si obviamente hincha enfermo de Newell's Old Boys.</p>
+	<p>Soy Profesor de Educación Física, un rubro totalmente distinto a este, pero siempre me apasionó enseñar y transmitir conocimientos</p>
+	<p>Ahora estoy por estos caminos empezando a programar, algo que siempre me encantó, ya que siempre supe bastante de computación e informática, me cautiva mucho el aprender como funcionan las cosas</p>
+	<p>Mi mayor deseo desde que tengo memoria fue crear mi propio videojuego, por eso me anoté en programación para aprender como funcionan los lenguajes y la lógica y así seguir especializandome para un día ser Game Dev y como no crear mi primer videojuego.</p>
+    <p>Actualmente estoy termminando este curso que es de Python orientado al desarrollo web en Coderhouse y estoy empezando el de Desarrollo de Videojuegos en Educación IT</p>
+    <p>para saber más de todo lo que hice acá les dejo mis repositorios en GitHub, saludos!!</p>
+
+    <div style="margin-top: 20px;"></div>
+    <a href="https://github.com/Nifoozmemeir" target="_blank"><button>Visitar Github</button></a>
+    </div>
+
+    <div style="margin-top: 20px;">
+        {% url 'Inicio' as url %}
+        <button class="center" type="button" onclick="window.location.href='{{ url }}'">Volver a la Home</button>
+    </div>
+{% endblock contenidoQCambia %}

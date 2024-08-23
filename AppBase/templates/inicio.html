@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}">
+
+    <div class="centrar-texto">
+        <h1>Bienvenido a la Home!!</h1>
+
+        <p>Por favor hace click en lo que quieras acceder!</p>
+
+        <h4>{{mensaje}}</h4>
+        
+    {% for fields_error in mi_formulario.errors.values %}
+        
+        {% for error in fields_error %}
+            <li>{{error}}</li>
+        {% endfor %}
+    {% endfor %}
+    </div>
+{% endblock contenidoQCambia %}

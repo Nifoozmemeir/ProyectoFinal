@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin: 1em 0;
+  }
+  
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    height: auto;
+  }
+
+  button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+  }
+  

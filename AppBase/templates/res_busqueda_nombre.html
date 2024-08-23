@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/res_busqueda_nombre.css' %}">
+
+<div class="container">
+    <p>Estas buscando los videojuegos con el nombre: {{nombre}}</p>
+    
+    {% if videojuegos %}
+        <ul>
+            {% for videojuego in videojuegos %}
+                <li>
+                    {{videojuego.nombre}} - {{videojuego.genero}} - {{videojuego.empresa}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron videojuegos con ese nombre</p>
+    {% endif %}
+</div>
+
+        
+{% endblock contenidoQCambia %}

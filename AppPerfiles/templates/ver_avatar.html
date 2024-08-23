@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+  <link rel="stylesheet" type="text/css" href="{% static 'ver_avatar.css' %}">
+
+    <h1>Ver Avatares</h1>
+
+    <div class="avatar-list">
+        {% for avatar in avatares %}
+        <div class="avatar-item">
+            <img src="{{ avatar.imagen.url }}" alt="Avatar">
+            <div style="margin-top: 20px;">
+                <form action="{% url 'EliminarAvatar' avatar.id %}" method="POST">{% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock contenidoQCambia %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/foro.css' %}">
+
+<div class="contenidoCentrado">
+  <h1>Foro</h1>
+  <ul>
+    {% for tema in temas %}
+      <li><a href="{% url 'DetalleTema' tema.pk %}">{{ tema.titulo }}</a> - Creado por {{ tema.creador.username }}</li>
+      <div style="display: flex; column-gap: 5px;">
+        <form action="{% url 'EliminarTema' tema.pk %}" method="POST">{% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
+        <button>
+            <a href="{% url 'EditarTema' tema.pk %}">Editar</a>
+        </button>
+      </div>
+    {% empty %}
+      <li>No hay temas disponibles.</li>
+    {% endfor %}
+  </ul>
+  <div style="margin-top: 20px;">
+    {% url 'CrearTema' as url %}
+    <button type="button" onclick="window.location.href='{{ url }}'">Crear nuevo tema</button>
+  </div>
+</div>
+{% endblock contenidoQCambia %}
